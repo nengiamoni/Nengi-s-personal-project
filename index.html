@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body>
     <header>
         <nav>
@@ -35,6 +34,16 @@
     </header>
 
     <main>
+        <section id="movie-details" style="display: none;">
+            <h2>Movie Details</h2>
+            <div class="movie-detail">
+                <img src="Images/Placeholder-image.jpg" alt="Movie Title" style="width: 200px;">
+                <h3 id="movie-title">The movie</h3>
+                <p id="movie-description">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button id="add-to-favorites-detail">Add to Favorites</button>
+            </div>
+        </section>
+
         <section id="trending-movies">
             <h2>Trending Movies</h2>
             <div class="movie-grid">
@@ -46,16 +55,6 @@
             <h2>Search Results</h2>
             <div class="movie-grid">
                 <!-- Search results will be injected here dynamically -->
-            </div>
-        </section>
-
-        <section id="movie-details" style="display: none;">
-            <h2>Movie Details</h2>
-            <div class="movie-detail">
-                <img src="Images/Placeholder-image-large.jpg" alt="Movie Title">
-                <h3 id="movie-title">Movie Title</h3>
-                <p id="movie-description">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <button id="add-to-favorites-detail">Add to Favorites</button>
             </div>
         </section>
 
