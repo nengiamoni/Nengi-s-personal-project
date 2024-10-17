@@ -5,8 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nengi's Movie Recommendation App</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Discover trending movies, search for your favorites, and manage your watchlist with Nengi's Movie Recommendation App.">
+    <meta name="keywords" content="movies, recommendation, trending, favorites, search">
+    <meta name="author" content="Nengi">
+
+    <!-- Favicon -->
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+
+    <!-- Link to External Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 
 <body>
     <header>
@@ -23,40 +38,14 @@
         <section id="trending-movies">
             <h2>Trending Movies</h2>
             <div class="movie-grid">
-                <!-- Placeholder content for trending movies -->
-                <div class="movie-card">
-                    <img src="Images/Placeholder-image.jpg" alt="Movie Title">
-                    <h3>Movie Title</h3>
-                    <p>Rating: 8.5</p>
-                    <button class="add-to-favorites" data-movie-id="1">Add to Favorites</button>
-                </div>
-                <div class="movie-card">
-                    <img src="Images/Placeholder-image.jpg" alt="Movie Title">
-                    <h3>Movie Title</h3>
-                    <p>Rating: 7.0</p>
-                    <button class="add-to-favorites" data-movie-id="2">Add to Favorites</button>
-                </div>
-                <div class="movie-card">
-                    <img src="Images/Placeholder-image.jpg" alt="Movie Title">
-                    <h3>Movie Title</h3>
-                    <p>Rating: 6.5</p>
-                    <button class="add-to-favorites" data-movie-id="3">Add to Favorites</button>
-                </div>
-                <!-- More placeholder movie cards as needed -->
+                <!-- Trending movies will be injected here dynamically -->
             </div>
         </section>
 
         <section id="search-results" style="display: none;">
             <h2>Search Results</h2>
             <div class="movie-grid">
-                <!-- Placeholder content for search results -->
-                <div class="movie-card">
-                    <img src="Images/Placeholder-image.jpg" alt="Search Result Title">
-                    <h3>Search Result Title</h3>
-                    <p>Rating: 7.8</p>
-                    <button class="add-to-favorites" data-movie-id="4">Add to Favorites</button>
-                </div>
-                <!-- More placeholder movie cards as needed -->
+                <!-- Search results will be injected here dynamically -->
             </div>
         </section>
 
@@ -64,28 +53,22 @@
             <h2>Movie Details</h2>
             <div class="movie-detail">
                 <img src="Images/Placeholder-image-large.jpg" alt="Movie Title">
-                <h3>Movie Title</h3>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <button id="add-to-favorites">Add to Favorites</button>
+                <h3 id="movie-title">Movie Title</h3>
+                <p id="movie-description">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button id="add-to-favorites-detail">Add to Favorites</button>
             </div>
         </section>
 
         <section id="favorites" style="display: none;">
             <h2>Your Favorites</h2>
             <div class="movie-grid">
-                <!-- Placeholder content for favorite movies -->
-                <div class="movie-card">
-                    <img src="Images/Placeholder-image.jpg" alt="Favorite Movie Title">
-                    <h3>Favorite Movie Title</h3>
-                    <button class="remove-favorite">Remove</button>
-                </div>
-                <!-- More favorite movie cards as needed -->
+                <!-- Favorite movies will be injected here dynamically -->
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Movie Recommendation App</p>
+        <p>&copy; 2024 Nengi's Movie Recommendation App</p>
     </footer>
 
     <script src="app.js"></script> <!-- Link to your JavaScript file -->

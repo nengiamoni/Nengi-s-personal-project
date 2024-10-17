@@ -3,6 +3,10 @@ const searchButton = document.getElementById('search-button');
 const searchBar = document.getElementById('search-bar');
 const trendingMoviesSection = document.getElementById('trending-movies');
 const searchResultsSection = document.getElementById('search-results');
+const movieDetailsSection = document.getElementById('movie-details');
+const movieTitleElement = document.getElementById('movie-title');
+const movieDescriptionElement = document.getElementById('movie-description');
+const favoritesSection = document.getElementById('favorites');
 
 let favorites = [];
 
@@ -44,10 +48,16 @@ function createMovieCard(movie) {
     addToFavoritesButton.setAttribute('data-movie-id', movie.id);
     addToFavoritesButton.textContent = 'Add to Favorites';
 
+    const viewDetailsButton = document.createElement('button');
+    viewDetailsButton.className = 'view-details';
+    viewDetailsButton.setAttribute('data-movie-id', movie.id);
+    viewDetailsButton.textContent = 'View Details';
+
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(rating);
     card.appendChild(addToFavoritesButton);
+    card.appendChild(viewDetailsButton);
 
     return card;
 }
@@ -84,7 +94,16 @@ function addToFavorites(movie) {
     }
 }
 
-// Event listener for "Add to Favorites" buttons
+// Show movie details
+async function showMovieDetails(movieId) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
+    const movie = await response.json();
+    movieTitleElement.textContent = movie.title;
+    movieDescriptionElement.textContent = `Description: ${movie.overview}`;
+    movieDetailsSection.style.display = 'block';
+}
+
+// Event listener for "Add to Favorites" and "View Details" buttons
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('add-to-favorites')) {
         const movieId = event.target.getAttribute('data-movie-id');
@@ -100,6 +119,9 @@ document.addEventListener('click', function (event) {
         };
 
         addToFavorites(movie);
+    } else if (event.target.classList.contains('view-details')) {
+        const movieId = event.target.getAttribute('data-movie-id');
+        showMovieDetails(movieId);
     }
 });
 
