@@ -12,39 +12,74 @@
     <header>
         <nav>
             <h1>Movie Recommendation App</h1>
-            <input type="text" id="search-bar" placeholder="Search for a movie..." />
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search for a movie..." />
+                <img src="Images/serach_icon.png" class="search-icon" alt="Search Icon" id="search-button" />
+            </div>
         </nav>
     </header>
 
     <main>
         <section id="trending-movies">
             <h2>Trending Movies</h2>
-            <div class="movie-grid" id="trending-movies-grid">
-                <!-- Movie cards will be dynamically added here -->
+            <div class="movie-grid">
+                <!-- Placeholder content for trending movies -->
+                <div class="movie-card">
+                    <img src="Images/Placeholder-image.jpg" alt="Movie Title">
+                    <h3>Movie Title</h3>
+                    <p>Rating: 8.5</p>
+                    <button class="add-to-favorites" data-movie-id="1">Add to Favorites</button>
+                </div>
+                <div class="movie-card">
+                    <img src="Images/Placeholder-image.jpg" alt="Movie Title">
+                    <h3>Movie Title</h3>
+                    <p>Rating: 7.0</p>
+                    <button class="add-to-favorites" data-movie-id="2">Add to Favorites</button>
+                </div>
+                <div class="movie-card">
+                    <img src="Images/Placeholder-image.jpg" alt="Movie Title">
+                    <h3>Movie Title</h3>
+                    <p>Rating: 6.5</p>
+                    <button class="add-to-favorites" data-movie-id="3">Add to Favorites</button>
+                </div>
+                <!-- More placeholder movie cards as needed -->
             </div>
         </section>
 
         <section id="search-results" style="display: none;">
             <h2>Search Results</h2>
-            <div class="movie-grid" id="search-results-grid">
-                <!-- Movie cards for search results will be dynamically added here -->
+            <div class="movie-grid">
+                <!-- Placeholder content for search results -->
+                <div class="movie-card">
+                    <img src="Images/Placeholder-image.jpg" alt="Search Result Title">
+                    <h3>Search Result Title</h3>
+                    <p>Rating: 7.8</p>
+                    <button class="add-to-favorites" data-movie-id="4">Add to Favorites</button>
+                </div>
+                <!-- More placeholder movie cards as needed -->
             </div>
         </section>
 
         <section id="movie-details" style="display: none;">
             <h2>Movie Details</h2>
             <div class="movie-detail">
-                <img id="movie-poster" src="Images/Placeholder-image-large.jpg" alt="Movie Title">
-                <h3 id="movie-title">Movie Title</h3>
-                <p id="movie-description">Description: Lorem ipsum dolor sit amet.</p>
+                <img src="Images/Placeholder-image-large.jpg" alt="Movie Title">
+                <h3>Movie Title</h3>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <button id="add-to-favorites">Add to Favorites</button>
             </div>
         </section>
 
         <section id="favorites" style="display: none;">
             <h2>Your Favorites</h2>
-            <div class="movie-grid" id="favorites-grid">
-                <!-- Favorite movies will be dynamically added here -->
+            <div class="movie-grid">
+                <!-- Placeholder content for favorite movies -->
+                <div class="movie-card">
+                    <img src="Images/Placeholder-image.jpg" alt="Favorite Movie Title">
+                    <h3>Favorite Movie Title</h3>
+                    <button class="remove-favorite">Remove</button>
+                </div>
+                <!-- More favorite movie cards as needed -->
             </div>
         </section>
     </main>

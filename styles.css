@@ -1,204 +1,96 @@
-/* Basic Reset */
-* {
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #f0f0f0;
 }
 
-/* Body Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    /* Light background */
-    color: #333;
-    /* Dark text for readability */
-}
-
-/* Header and Navigation */
+/* Header */
 header {
-    background-color: #ffffff;
-    /* White header */
-    border-bottom: 2px solid #ddd;
-    /* Light gray border at the bottom */
-    padding: 20px;
-    /* Padding around the header */
-    text-align: center;
-    /* Center text alignment */
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Navigation Title */
 nav h1 {
-    font-size: 2em;
-    /* Larger title */
-    margin-bottom: 10px;
-    /* Space below title */
-    color: #4A4A4A;
-    /* Darker text color */
+    margin: 0;
 }
 
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Search Bar */
 #search-bar {
     padding: 10px;
-    /* Padding inside the search bar */
-    width: 80%;
-    /* Responsive width */
-    max-width: 400px;
-    /* Max width for larger screens */
-    border: 1px solid #ddd;
-    /* Light gray border */
+    border: none;
     border-radius: 5px;
-    /* Rounded corners */
-    outline: none;
-    /* Remove outline */
-    font-size: 1em;
-    /* Font size for the search bar */
+    width: 300px;
+    /* Adjust width as needed */
 }
 
-/* Main Section Styles */
-main {
-    padding: 20px;
-    /* Padding around the main content */
-}
-
-/* Movie Sections */
-section {
-    margin-bottom: 30px;
-    /* Space below each section */
-}
-
-h2 {
-    font-size: 1.5em;
-    /* Section heading size */
-    margin-bottom: 15px;
-    /* Space below section headings */
-    color: #4A4A4A;
-    /* Darker color for section headings */
+/* Search Icon */
+.search-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    /* Adjust spacing */
+    height: 24px;
+    /* Adjust height as needed */
 }
 
 /* Movie Grid */
 .movie-grid {
-    display: grid;
-    /* Use grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    /* Responsive columns */
-    gap: 20px;
-    /* Space between grid items */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
-/* Movie Card Styles */
 .movie-card {
-    background-color: white;
-    /* White background for cards */
-    border: 1px solid #ddd;
-    /* Light gray border */
-    border-radius: 5px;
-    /* Rounded corners */
-    overflow: hidden;
-    /* Hide overflow */
-    transition: transform 0.2s, box-shadow 0.2s;
-    /* Smooth scaling and shadow on hover */
-}
-
-.movie-card:hover {
-    transform: translateY(-5px);
-    /* Lift effect on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow effect */
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 150px;
+    /* Adjust width */
 }
 
 .movie-card img {
     width: 100%;
-    /* Responsive image width */
     height: auto;
-    /* Auto height */
-}
-
-/* Movie Detail Section */
-#movie-details {
-    background-color: white;
-    /* White background */
-    border: 1px solid #ddd;
-    /* Light gray border */
     border-radius: 5px;
-    /* Rounded corners */
-    padding: 20px;
-    /* Padding inside the details section */
-    display: none;
-    /* Hidden by default */
 }
 
-#movie-details img {
-    width: 100%;
-    /* Responsive image width */
-    height: auto;
-    /* Auto height */
-    margin-bottom: 15px;
-    /* Space below image */
-}
-
-#movie-title {
-    font-size: 2em;
-    /* Large font size for title */
-    margin-bottom: 10px;
-    /* Space below title */
-    color: #4A4A4A;
-    /* Darker color for title */
-}
-
-#movie-description {
-    margin-bottom: 15px;
-    /* Space below description */
-}
-
-/* Favorites Section */
-#favorites {
-    background-color: white;
-    /* White background */
-    padding: 20px;
-    /* Padding inside favorites section */
-    display: none;
-    /* Hidden by default */
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    /* Center text alignment */
-    padding: 20px;
-    /* Padding around the footer */
-    background-color: #ffffff;
-    /* White footer background */
-    color: #4A4A4A;
-    /* Darker text color */
-    border-top: 2px solid #ddd;
-    /* Light gray border at the top */
-    position: relative;
-    /* Positioning for footer */
-    bottom: 0;
-    /* Align to bottom */
-    width: 100%;
-    /* Full width */
-}
-
-/* Additional Styles for Buttons */
+/* Button */
 button {
-    background-color: #4A90E2;
-    /* Button color */
-    color: white;
-    /* Button text color */
-    border: none;
-    /* No border */
-    border-radius: 5px;
-    /* Rounded corners */
     padding: 10px 15px;
-    /* Padding inside button */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    /* Pointer cursor */
-    font-size: 1em;
-    /* Font size for buttons */
-    transition: background-color 0.2s;
-    /* Smooth color change */
 }
 
 button:hover {
-    background-color: #357ABD;
-    /* Darker blue on hover */
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }

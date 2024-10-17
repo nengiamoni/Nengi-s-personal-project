@@ -1,76 +1,107 @@
-const API_KEY = '42a23a10ae7e6e9f66ee82985ea0f595';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const API_KEY = '42a23a10ae7e6e9f66ee82985ea0f595'; // Your TMDB API key
+const searchButton = document.getElementById('search-button');
+const searchBar = document.getElementById('search-bar');
+const trendingMoviesSection = document.getElementById('trending-movies');
+const searchResultsSection = document.getElementById('search-results');
 
-// Fetch Trending Movies from TMDb API
+let favorites = [];
+
+// Fetch and display trending movies
 async function fetchTrendingMovies() {
-    const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
+    const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
     const data = await response.json();
-    displayMovies(data.results, 'trending-movies-grid');
+    displayTrendingMovies(data.results);
 }
 
-// Fetch Movies based on search query
-async function searchMovies(query) {
-    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
-    const data = await response.json();
-    displayMovies(data.results, 'search-results-grid');
-}
-
-// Display Movies in the given section (trending or search results)
-function displayMovies(movies, elementId) {
-    const movieGrid = document.getElementById(elementId);
-    movieGrid.innerHTML = ''; // Clear previous content
+// Display trending movies on the page
+function displayTrendingMovies(movies) {
+    const movieGrid = trendingMoviesSection.querySelector('.movie-grid');
+    movieGrid.innerHTML = ''; // Clear existing content
 
     movies.forEach(movie => {
-        const movieCard = document.createElement('div');
-        movieCard.classList.add('movie-card');
-        movieCard.addEventListener('click', () => displayMovieDetails(movie.id)); // Add click event
-
-        const moviePoster = document.createElement('img');
-        moviePoster.src = movie.poster_path ? `${IMG_BASE_URL}${movie.poster_path}` : 'Images/Placeholder-image.jpg';
-        moviePoster.alt = movie.title;
-
-        const movieTitle = document.createElement('h3');
-        movieTitle.textContent = movie.title;
-
-        const movieRating = document.createElement('p');
-        movieRating.textContent = `Rating: ${movie.vote_average}`;
-
-        movieCard.appendChild(moviePoster);
-        movieCard.appendChild(movieTitle);
-        movieCard.appendChild(movieRating);
+        const movieCard = createMovieCard(movie);
         movieGrid.appendChild(movieCard);
     });
 }
 
-// Fetch and display details of a specific movie
-async function displayMovieDetails(movieId) {
-    const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
-    const movie = await response.json();
+// Create a movie card
+function createMovieCard(movie) {
+    const card = document.createElement('div');
+    card.className = 'movie-card';
 
-    const movieDetailsSection = document.getElementById('movie-details');
-    const moviePoster = document.getElementById('movie-poster');
-    const movieTitle = document.getElementById('movie-title');
-    const movieDescription = document.getElementById('movie-description');
+    const img = document.createElement('img');
+    img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+    img.alt = movie.title;
 
-    moviePoster.src = movie.poster_path ? `${IMG_BASE_URL}${movie.poster_path}` : 'Images/Placeholder-image-large.jpg';
-    movieTitle.textContent = movie.title;
-    movieDescription.textContent = `Description: ${movie.overview}`;
+    const title = document.createElement('h3');
+    title.textContent = movie.title;
 
-    movieDetailsSection.style.display = 'block'; // Show movie details section
+    const rating = document.createElement('p');
+    rating.textContent = `Rating: ${movie.vote_average}`;
+
+    const addToFavoritesButton = document.createElement('button');
+    addToFavoritesButton.className = 'add-to-favorites';
+    addToFavoritesButton.setAttribute('data-movie-id', movie.id);
+    addToFavoritesButton.textContent = 'Add to Favorites';
+
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(rating);
+    card.appendChild(addToFavoritesButton);
+
+    return card;
 }
 
-// Handle search input
-document.getElementById('search-bar').addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-        const query = event.target.value.trim();
-        if (query) {
-            searchMovies(query);
-            document.getElementById('search-results').style.display = 'block'; // Show search results section
-            document.getElementById('trending-movies').style.display = 'none'; // Hide trending section
-        }
+// Handle the search functionality
+searchButton.addEventListener('click', async () => {
+    const query = searchBar.value;
+    if (query) {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`);
+        const data = await response.json();
+        displaySearchResults(data.results);
     }
 });
 
-// Initialize the app by fetching trending movies
+// Display search results
+function displaySearchResults(movies) {
+    const movieGrid = searchResultsSection.querySelector('.movie-grid');
+    movieGrid.innerHTML = ''; // Clear existing content
+    searchResultsSection.style.display = 'block';
+
+    movies.forEach(movie => {
+        const movieCard = createMovieCard(movie);
+        movieGrid.appendChild(movieCard);
+    });
+}
+
+// Add to favorites functionality
+function addToFavorites(movie) {
+    if (!favorites.some(fav => fav.id === movie.id)) {
+        favorites.push(movie);
+        alert(`${movie.title} has been added to favorites!`);
+    } else {
+        alert(`${movie.title} is already in your favorites.`);
+    }
+}
+
+// Event listener for "Add to Favorites" buttons
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('add-to-favorites')) {
+        const movieId = event.target.getAttribute('data-movie-id');
+        const movieTitle = event.target.previousElementSibling.innerText; // Assuming h3 is before the button
+        const movieRating = event.target.previousElementSibling.nextElementSibling.innerText; // Assuming p is after the h3
+        const moviePoster = event.target.parentElement.querySelector('img').src; // Get the image source
+
+        const movie = {
+            id: movieId,
+            title: movieTitle,
+            rating: movieRating,
+            poster: moviePoster,
+        };
+
+        addToFavorites(movie);
+    }
+});
+
+// Initial fetch of trending movies on page load
 fetchTrendingMovies();
