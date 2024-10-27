@@ -34,23 +34,18 @@
     </header>
 
     <main>
+        <!-- Movie Details section for individual movie information -->
         <section id="movie-details" style="display: none;">
             <h2>Movie Details</h2>
             <div class="movie-detail">
                 <img src="Images/Placeholder-image.jpg" alt="Movie Title" style="width: 200px;">
-                <h3 id="movie-title">The movie</h3>
+                <h3 id="movie-title">The Movie</h3>
                 <p id="movie-description">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <button id="add-to-favorites-detail">Add to Favorites</button>
             </div>
         </section>
 
-        <section id="trending-movies">
-            <h2>Trending Movies</h2>
-            <div class="movie-grid">
-                <!-- Trending movies will be injected here dynamically -->
-            </div>
-        </section>
-
+        <!-- Search Results section, displayed above Trending Movies -->
         <section id="search-results" style="display: none;">
             <h2>Search Results</h2>
             <div class="movie-grid">
@@ -58,6 +53,15 @@
             </div>
         </section>
 
+        <!-- Trending Movies section -->
+        <section id="trending-movies">
+            <h2>Trending Movies</h2>
+            <div class="movie-grid">
+                <!-- Trending movies will be injected here dynamically -->
+            </div>
+        </section>
+
+        <!-- Favorites section for displaying saved movies -->
         <section id="favorites" style="display: none;">
             <h2>Your Favorites</h2>
             <div class="movie-grid">
